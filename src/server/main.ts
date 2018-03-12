@@ -5,14 +5,14 @@ import apiSchema from '../schema';
 
 const app = express();
 
-app.all('/graphql', (req, res) => res.redirect('/'))
+app.all('/graphql', (req, res) => res.redirect('/'));
 
 app.use('/', graphqlHTTP(() => ({
     schema: apiSchema,
     graphiql: true
 })));
 
-const listener = app.listen(3000, () => {
+const listener = app.listen(process.env.PORT, () => {
     let host = listener.address().address;
     if (host === '::') {
         host = 'localhost';
