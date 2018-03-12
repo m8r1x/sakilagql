@@ -1,8 +1,15 @@
 {
-  "name": "staffapits",
+  "name": "sakilagql",
+  "description": "A GraphQL wrapper for the sakila RESTful api",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "test": "npm build && ava",
+    "start": "npm build && node lib/server/main.js",
+    "start:dev": "ts-node src/server/main.js",
+    "watch": "tcs -w",
+    "build": "tsc"
+  },
   "dependencies": {
     "@types/express": "^4.11.1",
     "@types/express-graphql": "^0.0.36",
@@ -18,5 +25,11 @@
     "isomorphic-fetch": "^2.2.1",
     "url": "^0.11.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "ava": "^0.25.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/m8r1x/sakilagql"
+  }
 }
