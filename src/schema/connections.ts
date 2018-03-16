@@ -1,6 +1,5 @@
 import {
     connectionFromArray,
-    connectionArgs,
     connectionDefinitions
 } from 'graphql-relay';
 
@@ -8,9 +7,12 @@ import {
     GraphQLInt,
     GraphQLList,
     GraphQLObjectType,
-    GraphQLFieldConfig
+    GraphQLFieldConfig,
+    GraphQLFieldConfigArgumentMap
 } from 'graphql';
+
 import { getObjectFromUrls } from './apiHelper';
+import customConnectionArgs from './commonFields';
 
 export function connectionFromUrls(
     name: string,
@@ -42,9 +44,10 @@ full "{ edges { node } }" version should be used instead.`
             }
         })
     });
+    
     return {
         type: connectionType,
-        args: connectionArgs,
+        args: customConnectionArgs,
         resolve: async (obj, args) => {
             const array = await getObjectFromUrls(obj[prop] || []);
             return {

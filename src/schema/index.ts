@@ -9,12 +9,12 @@ import {
 import {
     fromGlobalId,
     connectionFromArray,
-    connectionArgs,
     connectionDefinitions
 } from 'graphql-relay';
 
 import { nodeField, apiTypeToGraphQLType } from './relayNode';
 import { getObjectFromTypeAndId, getObjectByType } from './apiHelper';
+import customConnectionArgs from './commonFields';
 
 function rootFieldById(idName: string, apiType: string) {
     const getter = (id: string) => getObjectFromTypeAndId(apiType, id);
@@ -69,7 +69,7 @@ full "{ edges { node } }" version should be used instead.`,
     });
     return {
         type: connectionType,
-        args: connectionArgs,
+        args: customConnectionArgs,
         resolve: async(_: any, args: object) => {
             const { objects, totalCount } = await getObjectByType(apiType);
             return { ...connectionFromArray(objects, args), totalCount };

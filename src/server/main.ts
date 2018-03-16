@@ -1,6 +1,8 @@
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
 
+let depthLimit = require('graphql-depth-limit');
+
 import apiSchema from '../schema';
 
 const app = express();
@@ -9,7 +11,8 @@ app.all('/graphql', (req, res) => res.redirect('/'))
 
 app.use('/', graphqlHTTP(() => ({
     schema: apiSchema,
-    graphiql: true
+    graphiql: true,
+    validationRules: [depthLimit(10)]
 })));
 
 const listener = app.listen(3000, () => {

@@ -1,31 +1,33 @@
 {
   "name": "sakilagql",
-  "description": "A GraphQL wrapper for the sakila RESTful api",
+  "description": "A GraphQL wrapper for the sakilaapi.herokuapp.com",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "test": "npm build && ava",
-    "start": "npm build && node lib/server/main.js",
+    "test": "npm run-script build && ava",
+    "start": "npm run-script build && node lib/server/main.js",
     "start:dev": "ts-node src/server/main.js",
     "watch": "tcs -w",
     "build": "tsc"
   },
   "dependencies": {
+    "dataloader": "^1.4.0",
+    "express": "^4.16.2",
+    "express-graphql": "^0.6.12",
+    "graphql": "^0.13.1",
+    "graphql-depth-limit": "^1.1.0",
+    "graphql-input-number": "^0.0.10",
+    "graphql-relay": "^0.5.4",
+    "isomorphic-fetch": "^2.2.1",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
     "@types/express": "^4.11.1",
     "@types/express-graphql": "^0.0.36",
     "@types/graphql": "^0.12.4",
     "@types/graphql-relay": "^0.4.4",
     "@types/isomorphic-fetch": "^0.0.34",
     "@types/node": "^9.4.6",
-    "dataloader": "^1.4.0",
-    "express": "^4.16.2",
-    "express-graphql": "^0.6.12",
-    "graphql": "^0.13.1",
-    "graphql-relay": "^0.5.4",
-    "isomorphic-fetch": "^2.2.1",
-    "url": "^0.11.0"
-  },
-  "devDependencies": {
     "ava": "^0.25.0"
   },
   "repository": {
